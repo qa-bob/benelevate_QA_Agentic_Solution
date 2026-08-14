@@ -1,23 +1,17 @@
 ﻿{
-    "name":  "BenElevate",
-    "url":  "https://benelevate.com",
-    "description":  "",
-    "industry":  "",
-    "hasContactForm":  true,
-    "expectedNavItems":  [
-
-                         ],
-    "viewports":  [
-                      "desktop",
-                      "mobile",
-                      "tablet"
-                  ],
-    "skipVisual":  false,
-    "skipForms":  false,
-    "auth":  {
-                 "required":  false,
-                 "loginUrl":  "",
-                 "username":  "",
-                 "password":  ""
-             }
+    "name": "BenElevate",
+    "url": "https://benelevate.com",
+    "description": "Domain listing for BenElevate.com — currently for sale via HugeDomains at $4,295",
+    "industry": "Domain Sales",
+    "hasContactForm": false,
+    "expectedNavItems": ["Home", "FAQs", "About us", "Contact us", "My account"],
+    "viewports": ["desktop", "mobile", "tablet"],
+    "skipVisual": false,
+    "skipForms": true,
+    "auth": {
+        "required": false,
+        "loginUrl": "",
+        "username": "",
+        "password": ""
+    }
 }

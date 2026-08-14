@@ -10,10 +10,11 @@
  */
 
 import { test as base, expect } from '@playwright/test';
-import { loadSiteConfig, type SiteConfig } from '@types/site-config.types';
+import { loadSiteConfig, type SiteConfig } from '@test-types/site-config.types';
 import { HomePage } from '@pages/home.page';
 import { NavigationPage } from '@pages/navigation.page';
 import { ContactFormPage } from '@pages/contact.page';
+import { DomainListingPage } from '@pages/domain-listing.page';
 
 // ── Fixture type definitions ─────────────────────────────────────────────────
 
@@ -26,6 +27,8 @@ export interface Fixtures {
   navigationPage: NavigationPage;
   /** ContactFormPage page object (does not auto-navigate) */
   contactPage: ContactFormPage;
+  /** Pre-navigated DomainListingPage page object */
+  domainListingPage: DomainListingPage;
 }
 
 // ── Extended test object ─────────────────────────────────────────────────────
@@ -66,6 +69,17 @@ export const test = base.extend<Fixtures>({
   contactPage: async ({ page, siteConfig }, use) => {
     const contactPage = new ContactFormPage(page, siteConfig);
     await use(contactPage);
+  },
+
+  /**
+   * domainListingPage — constructs DomainListingPage and navigates to the site root.
+   * Models the HugeDomains for-sale page currently served at benelevate.com.
+   */
+  domainListingPage: async ({ page, siteConfig }, use) => {
+    const domainListingPage = new DomainListingPage(page, siteConfig);
+    await domainListingPage.navigate();
+    await domainListingPage.waitForLoad();
+    await use(domainListingPage);
   },
 });
 
