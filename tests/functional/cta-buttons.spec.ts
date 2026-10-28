@@ -54,7 +54,8 @@ test.describe('CTA Buttons @functional', () => {
   test('"Buy now" button is visible above the fold at desktop viewport @functional', async ({
     page,
     siteConfig,
-  }) => {
+  }, testInfo) => {
+    test.skip(testInfo.project.name !== 'chromium-desktop', 'Runs only in the "chromium-desktop" project');
     await page.setViewportSize({ width: 1280, height: 720 });
     await page.goto(siteConfig.url, { waitUntil: 'domcontentloaded' });
 
